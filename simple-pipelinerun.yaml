@@ -1,0 +1,57 @@
+#
+# Sample pipelinerun for deploying an App Connect Enterprise integration server
+#
+# You need to modify this with details of your own App Connect application.
+#
+# This sample shows how to deploy a simple stand-alone App Connect application
+
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: ace-pipeline-
+spec:
+  serviceAccountName: ace-pipeline-deployer-serviceaccount
+  params:
+    # ########################################################
+    # where to run the App Connect application
+    # ########################################################
+    # what to call the IntegrationServer that runs your application
+    - name: integration-server-name
+      value: "hello-world"
+    # where to run your application
+    - name: ace-namespace
+      value: "ace-demo"
+
+    # ########################################################
+    # where to find the projects to create
+    # ########################################################
+    # location of the git repository with your application
+    - name: git-repository
+      value: "https://github.com/aceorg-khongks/ace-src"
+
+    # name of the App Connect project to deploy
+    #  This should be the name of a folder in ace-projects
+    - name: ace-project-name
+      value: "Books"
+
+    # name of an App Connect test project
+    #  This is used to verify the bar before the new
+    #  Integration Server is deployed
+    #  This should be the name of a folder in ace-projects
+    - name: test-project-name
+      value: ""
+
+
+  pipelineRef:
+    name: ace-pipeline
+
+  workspaces:
+    - name: shared-workspace
+      volumeClaimTemplate:
+        spec:
+          storageClassName: ibmc-block-gold
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 100Mi
