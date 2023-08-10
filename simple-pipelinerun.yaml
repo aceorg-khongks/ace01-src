@@ -9,6 +9,7 @@ apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
   generateName: ace-pipeline-
+  namespace: ace01-ci
 spec:
   serviceAccountName: ace-pipeline-deployer-serviceaccount
   params:
@@ -17,22 +18,26 @@ spec:
     # ########################################################
     # what to call the IntegrationServer that runs your application
     - name: integration-server-name
-      value: "hello-world"
+      value: "books-is"
     # where to run your application
     - name: ace-namespace
-      value: "ace-demo"
+      value: "ace01-ci"
 
     # ########################################################
     # where to find the projects to create
     # ########################################################
     # location of the git repository with your application
     - name: git-repository
-      value: "https://github.com/aceorg-khongks/ace-src"
+      value: "https://github.com/aceorg-khongks/ace01-src"
 
     # name of the App Connect project to deploy
     #  This should be the name of a folder in ace-projects
     - name: ace-project-name
       value: "Books"
+
+    #  This should be the name of a Java folder in ace-projects
+    - name: java-project-name
+      value: BooksJava
 
     # name of an App Connect test project
     #  This is used to verify the bar before the new
@@ -49,7 +54,7 @@ spec:
     - name: shared-workspace
       volumeClaimTemplate:
         spec:
-          storageClassName: ibmc-block-gold
+          storageClassName: lvms-vg1-immed
           accessModes:
             - ReadWriteOnce
           resources:

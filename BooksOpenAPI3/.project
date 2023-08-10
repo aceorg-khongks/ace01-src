@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Books</name>
+	<name>BooksOpenAPI3</name>
 	<comment></comment>
 	<projects>
-		<project>BooksJava</project>
+		<project>BooksOpenAPI3Java</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -78,6 +78,11 @@
 		</buildCommand>
 		<buildCommand>
 			<name>com.ibm.etools.mft.policy.ui.policybuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.msg.assembly.messageAssemblyBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
