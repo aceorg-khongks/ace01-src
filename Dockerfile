@@ -11,7 +11,6 @@ COPY *.bar /tmp
 COPY startup.sh /usr/local/bin
 
 RUN set -x && \
-    source /opt/ibm/ace-12/server/bin/mqsiprofile && \
     chmod -R ugo+rwx /home/aceuser/ && \
     chmod 777 /usr/local/bin/startup.sh &&
 
