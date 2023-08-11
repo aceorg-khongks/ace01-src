@@ -46,6 +46,9 @@ spec:
     - name: test-project-name
       value: ""
 
+    - name: target-build-image
+      value: image-registry.openshift-image-registry.svc:5000/ace01-ci/ace01:0.0.1
+
 
   pipelineRef:
     name: ace-pipeline
