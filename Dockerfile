@@ -12,7 +12,7 @@ COPY startup.sh /usr/local/bin
 
 RUN set -x && \
     chmod -R ugo+rwx /home/aceuser/ && \
-    chmod 777 /usr/local/bin/startup.sh &&
+    chmod 777 /usr/local/bin/startup.sh
 
 USER aceuser  
 WORKDIR  /home/aceuser  
