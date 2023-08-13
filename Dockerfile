@@ -6,17 +6,15 @@ USER root
 # RUN microdnf update && microdnf clean all
 
 ENV LICENSE=accept
-ENV MQSI_REGISTRY=/tmp/perms-work-dir/config
-ENV MQSI_WORKPATH=/tmp/perms-work-dir/config
 
 COPY *.bar /tmp
-COPY startup.sh /usr/local/bin
 
-RUN set -x && \
-    chmod -R ugo+rwx /home/aceuser/ && \
-    chmod 777 /usr/local/bin/startup.sh
+RUN . /opt/ibm/ace-12/server/bin/mqsiprofile \
+    && set -x \ 
+    && for FILE in /tmp/*.bar; do echo "$FILE" >> /tmp/deploys \
+    && ibmint package --compile-maps-and-schemas --input-bar-file "$FILE" --output-bar-file /tmp/temp.bar  2>&1 | tee -a /tmp/deploys \
+    && ibmint deploy --input-bar-file /tmp/temp.bar --output-work-directory /home/aceuser/ace-server/ 2>&1 | tee -a /tmp/deploys; done \
+    && ibmint optimize server --work-dir /home/aceuser/ace-server \
+    && chmod -R ugo+rwx /home/aceuser/
 
-USER aceuser  
-WORKDIR  /home/aceuser  
-
-ENTRYPOINT ["/usr/local/bin/startup.sh" ]
+USER 1001
