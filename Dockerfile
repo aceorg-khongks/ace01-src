@@ -3,17 +3,18 @@ FROM ${FROMIMAGE}
 
 USER root
 
-RUN microdnf update && microdnf clean all
+# RUN microdnf update && microdnf clean all
 
 ENV LICENSE=accept
+ENV MQSI_REGISTRY=/tmp/perms-work-dir/config
+ENV MQSI_WORKPATH=/tmp/perms-work-dir/config
 
 COPY *.bar /tmp
 COPY startup.sh /usr/local/bin
 
 RUN set -x && \
     chmod -R ugo+rwx /home/aceuser/ && \
-    chmod 777 /usr/local/bin/startup.sh && \
-    chmod -R 777 /var/mqsi
+    chmod 777 /usr/local/bin/startup.sh
 
 USER aceuser  
 WORKDIR  /home/aceuser  
