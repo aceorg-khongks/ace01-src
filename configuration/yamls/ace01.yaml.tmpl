@@ -11,7 +11,7 @@ spec:
   pod:
     containers:
       runtime:
-        image: image-registry.openshift-image-registry.svc:5000/ace01-ci/${NAME}:${APP_VERSION}
+        image: quay.io/kskhong/${NAME}:${APP_VERSION}
         resources:
           limits:
             cpu: 300m

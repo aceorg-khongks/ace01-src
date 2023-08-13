@@ -47,7 +47,7 @@ spec:
       value: ""
 
     - name: target-build-image
-      value: image-registry.openshift-image-registry.svc:5000/ace01-ci/ace01:0.0.1
+      value: quay.io/kskhong/ace01:1.0.0
 
 
   pipelineRef:

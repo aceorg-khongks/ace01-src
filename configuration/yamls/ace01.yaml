@@ -2,15 +2,18 @@ apiVersion: appconnect.ibm.com/v1beta1
 kind: IntegrationServer
 metadata:
   name: ace01
+  namespace: ace01-dev
 spec:
   license:
     accept: true
     license: L-LFMR-BTD75V
-    use: AppConnectEnterpriseNonProductionFREE
+    use: CloudPakForIntegrationNonProductionFREE
   pod:
+    imagePullSecrets:
+      - name: quayio-pull-secret
     containers:
       runtime:
-        image: image-registry.openshift-image-registry.svc:5000/ace01-ci/ace01:0.0.1
+        image: quay.io/kskhong/ace01:1.0.0
         resources:
           limits:
             cpu: 300m
