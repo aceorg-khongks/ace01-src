@@ -13,7 +13,7 @@ spec:
       - name: quayio-pull-secret
     containers:
       runtime:
-        image: quay.io/kskhong/ace01:1.0.0
+        image: quay.io/kkscp4i/ace01:1.0.0
         resources:
           limits:
             cpu: 300m
