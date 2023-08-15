@@ -14,7 +14,8 @@ spec:
     containers:
       runtime:
         # image: quay.io/kkscp4i/ace01:1.0.0
-        image: docker.io/koksing/ace01:1.0.0
+        # image: docker.io/koksing/ace01:1.0.0
+        image: cloud.canister.io:5000/khongks/ace01:1.0.0
         resources:
           limits:
             cpu: 300m
