@@ -47,7 +47,9 @@ spec:
       value: ""
 
     - name: target-build-image
-      value: quay.io/kkscp4i/ace01:1.0.0
+      #value: quay.io/kkscp4i/ace01:1.0.0
+      value: docker.io/koksing/ace01:1.0.0
+
 
 
   pipelineRef:
