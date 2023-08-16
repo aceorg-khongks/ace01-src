@@ -49,7 +49,7 @@ spec:
     - name: target-build-image
       #value: quay.io/kkscp4i/ace01:1.0.0
       # value: docker.io/koksing/ace01:1.0.0
-      value: cloud.canister.io:5000/khongks/ace01:1.0.0
+      value: image-registry.openshift-image-registry.svc.cluster.local:5000/ace-ci/ace01:1.0.0
 
   pipelineRef:
     name: ace-pipeline
