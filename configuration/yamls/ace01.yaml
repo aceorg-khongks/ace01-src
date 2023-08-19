@@ -9,13 +9,11 @@ spec:
     license: L-LFMR-BTD75V
     use: CloudPakForIntegrationNonProductionFREE
   pod:
-    imagePullSecrets:
-      - name: quayio-pull-secret
     containers:
       runtime:
         # image: quay.io/kkscp4i/ace01:1.0.0
         # image: docker.io/koksing/ace01:1.0.0
-        image: image-registry.openshift-image-registry.svc.cluster.local:5000/ace-ci/ace01:1.0.0
+        image: image-registry.openshift-image-registry.svc.cluster.local:5000/ace01-ci/ace01:1.0.0
         resources:
           limits:
             cpu: 300m

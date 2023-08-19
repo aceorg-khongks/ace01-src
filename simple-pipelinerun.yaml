@@ -18,10 +18,10 @@ spec:
     # ########################################################
     # what to call the IntegrationServer that runs your application
     - name: integration-server-name
-      value: "books-is"
+      value: books-is
     # where to run your application
     - name: ace-namespace
-      value: "ace01-ci"
+      value: ace01-ci
 
     # ########################################################
     # where to find the projects to create
@@ -47,24 +47,25 @@ spec:
       value: ""
 
     - name: target-build-image
-      #value: quay.io/kkscp4i/ace01:1.0.0
-      # value: docker.io/koksing/ace01:1.0.0
-      value: image-registry.openshift-image-registry.svc.cluster.local:5000/ace-ci/ace01:1.0.0
+      value: image-registry.openshift-image-registry.svc.cluster.local:5000/ace01-ci/ace01:1.0.0
 
   pipelineRef:
     name: ace-pipeline
 
-  workspaces:
-    - name: shared-workspace
-      persistentVolumeClaim:
-        claimName: workspace-pvc
   # workspaces:
   #   - name: shared-workspace
-  #     volumeClaimTemplate:
-  #       spec:
-  #         storageClassName: lvms-vg1-immed
-  #         accessModes:
-  #           - ReadWriteOnce
-  #         resources:
-  #           requests:
-  #             storage: 100Mi
+  #     persistentVolumeClaim:
+  #       claimName: workspace-pvc
+  workspaces:
+    - name: shared-workspace
+      volumeClaimTemplate:
+        spec:
+          storageClassName: lvms-vg1-immed
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 100Mi
+    - name: dockerconfig-workspace
+      secret:
+        secretName: dockerconfig-secret
