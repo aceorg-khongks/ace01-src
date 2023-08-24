@@ -1,19 +1,17 @@
 apiVersion: appconnect.ibm.com/v1beta1
 kind: IntegrationServer
 metadata:
-  name: ace01
-  namespace: ace01-dev
+  name: ${NAME}
+  namespace: ${NAMESPACE}
 spec:
   license:
     accept: true
-    license: L-LFMR-BTD75V
-    use: CloudPakForIntegrationNonProductionFREE
+    license: ${LICENSE}
+    use: ${USE}
   pod:
     containers:
       runtime:
-        # image: quay.io/kkscp4i/ace01:1.0.0
-        # image: docker.io/koksing/ace01:1.0.0
-        image: image-registry.openshift-image-registry.svc.cluster.local:5000/ace01-ci/ace01:1.0.0
+        image: ${IMAGE_URL}
         resources:
           limits:
             cpu: 300m
@@ -24,13 +22,12 @@ spec:
   adminServerSecure: true
   enableMetrics: true
   createDashboardUsers: true
-  # barURL: ${bar_url}
-  # configurations: [ bar-auth-config ]
+#  configurations: [ ${CONFIGURATIONS} ]
   router:
     timeout: 120s
   designerFlowsOperationMode: disabled
   service:
     endpointType: http
-  version: 12.0.9.0-r1
+  version: ${VERSION}
   replicas: 1
   logFormat: basic

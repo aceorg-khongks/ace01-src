@@ -1,13 +1,14 @@
 ARG  FROMIMAGE=cp.icr.io/cp/appc/ace-server-prod@sha256:246828d9f89c4ed3a6719cd3e4b71b1dec382f848c9bf9c28156f78fa05bc4e7
 FROM ${FROMIMAGE}
 
-# USER root
+ARG BAR_FILE=bars/*.bar
 
+# USER root
 # RUN microdnf update && microdnf clean all
 
 ENV LICENSE=accept
 
-COPY *.bar /tmp
+COPY ${BAR_FILE} /tmp
 
 RUN . /opt/ibm/ace-12/server/bin/mqsiprofile \
     && set -x \ 

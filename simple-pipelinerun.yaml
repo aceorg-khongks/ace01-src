@@ -60,7 +60,7 @@ spec:
     - name: shared-workspace
       volumeClaimTemplate:
         spec:
-          storageClassName: lvms-vg1-immed
+          storageClassName: managed-nfs-storage
           accessModes:
             - ReadWriteOnce
           resources:
