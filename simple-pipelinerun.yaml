@@ -47,7 +47,7 @@ spec:
       value: ""
 
     - name: target-build-image
-      value: image-registry.openshift-image-registry.svc.cluster.local:5000/ace01-ci/ace01:1.0.0
+      value: image-registry.openshift-image-registry.svc.cluster.local:5000/ace01-dev/ace01:1.0.0
 
   pipelineRef:
     name: ace-pipeline
