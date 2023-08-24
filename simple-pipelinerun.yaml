@@ -52,6 +52,21 @@ spec:
     - name: target-build-image
       value: image-registry.openshift-image-registry.svc.cluster.local:5000/ace01-dev/ace01:1.0.0
 
+    - name: git-user-name
+      value: "khongks"
+    - name: git-user-email
+      value: "khongks@uk.ibm.com"
+    - name: git-script
+      value: |
+        # Push changes to GitHub
+        cd $(workspaces.source.path)
+        git checkout -b main
+        git add .
+        git commit -s -m "Updated by build pipeline"
+        git push origin main
+
+        # All done
+
   pipelineRef:
     name: ace-pipeline
 
