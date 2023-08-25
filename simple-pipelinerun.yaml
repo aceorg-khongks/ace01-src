@@ -60,7 +60,7 @@ spec:
       value: |
         # Push changes to GitHub
 
-        cd $(workspaces.output.path)
+        cd $(workspaces.source.path)
         ls -l
         git checkout -b main
         git add .
