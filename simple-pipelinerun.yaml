@@ -89,6 +89,6 @@ spec:
     - name: dockerconfig-workspace
       secret:
         secretName: dockerconfig-secret
-    - name: basic-auth
+    - name: basic-auth-workspace
       secret:
         secretName: ace01-git-credentials
