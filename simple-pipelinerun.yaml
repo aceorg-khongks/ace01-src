@@ -55,11 +55,13 @@ spec:
     - name: git-user-name
       value: "khongks"
     - name: git-user-email
-      value: "khongks@uk.ibm.com"
+      value: "khongks@gmail.com"
     - name: git-script
       value: |
         # Push changes to GitHub
-        cd $(workspaces.source.path)
+
+        # cd $(workspaces.output.path)
+        ls -l
         git checkout -b main
         git add .
         git commit -s -m "Updated by build pipeline"
