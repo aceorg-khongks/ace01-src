@@ -60,9 +60,10 @@ spec:
       value: |
         # Push changes to GitHub
 
-        cd $(workspaces.source.path)
+        cd $(workspaces.output.path)
         ls -l
-        git checkout -b main
+        # git checkout -b main
+        ls environments/dev/ace01 
         git add .
         git commit -s -m "Updated by build pipeline"
         git push origin main
