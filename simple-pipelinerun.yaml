@@ -60,7 +60,7 @@ spec:
       value: |
         # Push changes to GitHub
 
-        # cd $(workspaces.output.path)
+        cd $(workspaces.output.path)
         ls -l
         git checkout -b main
         git add .
@@ -89,3 +89,6 @@ spec:
     - name: dockerconfig-workspace
       secret:
         secretName: dockerconfig-secret
+    - name: basic-auth
+      secret:
+        secretName: ace01-git-credentials
