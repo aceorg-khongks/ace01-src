@@ -21,7 +21,7 @@ spec:
       value: books-is
     # where to run your application
     - name: ace-namespace
-      value: ace01-ci
+      value: ace01-dev
 
     # ########################################################
     # where to find the projects to create
@@ -62,14 +62,12 @@ spec:
 
         cd $(workspaces.output.path)/gitops
         ls -l
-        # git checkout -b main
         ls environments/dev/ace01 
-        git config --global --add safe.directory /workspace/output
+        git config --global --add safe.directory /workspace/output/gitops
+        git checkout -b main
         git add .
-        git commit -s -m "Updated by build pipeline"
-        git push origin main
-
-        # All done
+        git commit -am "Updated by build pipeline"
+        git push -u origin main
 
   pipelineRef:
     name: ace-pipeline
