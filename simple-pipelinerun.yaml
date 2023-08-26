@@ -23,6 +23,9 @@ spec:
     - name: ace-namespace
       value: ace01-dev
 
+    - name: integration-server-replicas
+      value: "2"
+
     # ########################################################
     # where to find the projects to create
     # ########################################################
@@ -49,8 +52,8 @@ spec:
     - name: test-project-name
       value: ""
 
-    - name: target-build-image
-      value: image-registry.openshift-image-registry.svc.cluster.local:5000/ace01-dev/ace01:1.0.0
+    # - name: target-build-image
+    #   value: image-registry.openshift-image-registry.svc.cluster.local:5000/ace01-dev/ace01:1.0.0
 
     - name: git-user-name
       value: "khongks"
