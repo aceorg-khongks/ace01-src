@@ -60,10 +60,11 @@ spec:
       value: |
         # Push changes to GitHub
 
-        cd $(workspaces.output.path)
+        cd $(workspaces.output.path)/gitops
         ls -l
         # git checkout -b main
         ls environments/dev/ace01 
+        git config --global --add safe.directory /workspace/output
         git add .
         git commit -s -m "Updated by build pipeline"
         git push origin main
